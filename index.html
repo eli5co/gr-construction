@@ -6,7 +6,7 @@
     <title>GR Construction - Professional Remodeling & Construction Services</title>
     <meta name="description" content="GR Construction offers professional remodeling and construction services including kitchen and bathroom renovations, basement finishing, masonry, roofing, and more.">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap">
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="style.css">
     <!-- Structured data for local business -->
     <script type="application/ld+json">
     {
@@ -78,8 +78,22 @@
                     <h1>GR Construction</h1>
                 </div>
                 <div class="nav-links" id="navLinks">
-                    <a href="#services">Services</a>
-                    <a href="#gallery">Gallery</a>
+                    <div class="dropdown">
+                        <a href="#services" class="dropdown-toggle">Services 
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="#services">Kitchen Remodeling</a>
+                            <a href="#services">Bathroom Remodeling</a>
+                            <a href="#services">Basement Remodeling</a>
+                            <a href="#services">Interior Remodeling</a>
+                            <a href="#services">Exterior Remodeling</a>
+                            <a href="#services">Masonry</a>
+                        </div>
+                    </div>
+                    <a href="#photo-gallery">Gallery</a>
                     <a href="#testimonials">Testimonials</a>
                     <a href="#contact">Contact</a>
                 </div>
@@ -94,7 +108,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero" style="background-image: url('img/hero-background.jpg');">
+    <section class="hero">
         <div class="hero-content">
             <h1>Quality Construction & Remodeling</h1>
             <p>Professional construction and remodeling services for residential and commercial properties. From kitchen and bathroom renovations to complete home transformations, we bring your vision to life.</p>
@@ -125,7 +139,7 @@
             </div>
             <div class="grid-3">
                 <div class="service-card">
-                    <img src="img/kitchen-remodeling.jpg" alt="Kitchen Remodeling" loading="lazy">
+                    <img src="kitchen-remodeling.jpg" alt="Kitchen Remodeling" loading="lazy">
                     <div class="service-content">
                         <h3>Kitchen Remodeling</h3>
                         <p>Transform your kitchen with our custom remodeling services.</p>
@@ -142,7 +156,7 @@
                     </div>
                 </div>
                 <div class="service-card">
-                    <img src="img/bathroom-remodeling.jpg" alt="Bathroom Remodeling" loading="lazy">
+                    <img src="bathroom-remodeling.jpg" alt="Bathroom Remodeling" loading="lazy">
                     <div class="service-content">
                         <h3>Bathroom Remodeling</h3>
                         <p>Create your dream bathroom with our professional renovation services.</p>
@@ -159,7 +173,7 @@
                     </div>
                 </div>
                 <div class="service-card">
-                    <img src="img/basement-remodeling.jpg" alt="Basement Remodeling" loading="lazy">
+                    <img src="basement-remodeling.jpg" alt="Basement Remodeling" loading="lazy">
                     <div class="service-content">
                         <h3>Basement Remodeling</h3>
                         <p>Transform your unfinished basement into a valuable living space.</p>
@@ -176,7 +190,7 @@
                     </div>
                 </div>
                 <div class="service-card">
-                    <img src="img/interior-remodeling.jpg" alt="Interior Remodeling" loading="lazy">
+                    <img src="interior-remodeling.jpg" alt="Interior Remodeling" loading="lazy">
                     <div class="service-content">
                         <h3>Interior Remodeling</h3>
                         <p>Comprehensive interior renovations to modernize and enhance your home.</p>
@@ -193,7 +207,7 @@
                     </div>
                 </div>
                 <div class="service-card">
-                    <img src="img/exterior-remodeling.jpg" alt="Exterior Remodeling" loading="lazy">
+                    <img src="exterior-remodeling.jpg" alt="Exterior Remodeling" loading="lazy">
                     <div class="service-content">
                         <h3>Exterior Remodeling</h3>
                         <p>Boost your home's curb appeal and protect your investment.</p>
@@ -210,7 +224,7 @@
                     </div>
                 </div>
                 <div class="service-card">
-                    <img src="img/masonry-services.jpg" alt="Masonry Services" loading="lazy">
+                    <img src="masonry-services.jpg" alt="Masonry Services" loading="lazy">
                     <div class="service-content">
                         <h3>Masonry</h3>
                         <p>Professional masonry services for both functional and decorative elements.</p>
@@ -230,8 +244,51 @@
         </div>
     </section>
 
+    <!-- Photo Gallery Slider Section -->
+    <section id="photo-gallery" class="section bg-light fade-in-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Work</h2>
+                <p>Browse through our recent projects and transformations</p>
+            </div>
+            <div class="gallery-slider" id="gallerySlider">
+                <div class="gallery-slide">
+                    <img src="gallery-1.jpg" alt="Kitchen Remodeling Project" class="gallery-slide-image">
+                </div>
+                <div class="gallery-slide">
+                    <img src="gallery-2.jpg" alt="Bathroom Renovation Project" class="gallery-slide-image">
+                </div>
+                <div class="gallery-slide">
+                    <img src="gallery-3.jpg" alt="Basement Finishing Project" class="gallery-slide-image">
+                </div>
+                <div class="gallery-slide">
+                    <img src="gallery-4.jpg" alt="Home Addition Project" class="gallery-slide-image">
+                </div>
+                <div class="gallery-slide">
+                    <img src="gallery-5.jpg" alt="Custom Carpentry Project" class="gallery-slide-image">
+                </div>
+                <div class="gallery-slide">
+                    <img src="gallery-6.jpg" alt="Full Home Renovation Project" class="gallery-slide-image">
+                </div>
+            </div>
+            <div class="gallery-nav">
+                <button class="gallery-prev" aria-label="Previous slide">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+                <div class="gallery-dots"></div>
+                <button class="gallery-next" aria-label="Next slide">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
     <!-- Why Choose Us Section -->
-    <section id="why-choose-us" class="section bg-light fade-in-section">
+    <section id="why-choose-us" class="section fade-in-section">
         <div class="container">
             <div class="section-header">
                 <h2>Why Choose GR Construction</h2>
@@ -327,7 +384,7 @@
     </section>
 
     <!-- Process Section -->
-    <section id="process" class="section fade-in-section">
+    <section id="process" class="section bg-light fade-in-section">
         <div class="container">
             <div class="section-header">
                 <h2>The GR Construction Difference</h2>
@@ -359,7 +416,7 @@
     </section>
 
     <!-- Gallery Section with Recent Projects -->
-    <section id="gallery" class="section bg-light fade-in-section">
+    <section id="gallery" class="section fade-in-section">
         <div class="container">
             <div class="section-header">
                 <h2>Our Recent Projects</h2>
@@ -368,25 +425,25 @@
             <div class="gallery-grid">
                 <!-- Project 1 -->
                 <div class="gallery-item">
-                    <img src="img/project-1.jpg" alt="Kitchen Remodeling" class="gallery-image">
+                    <img src="project-1.jpg" alt="Kitchen Remodeling" class="gallery-image">
                     <p class="gallery-caption">Modern Kitchen Renovation - Englewood, NJ</p>
                 </div>
                 
                 <!-- Project 2 -->
                 <div class="gallery-item">
-                    <img src="img/project-2.jpg" alt="Bathroom Remodeling" class="gallery-image">
+                    <img src="project-2.jpg" alt="Bathroom Remodeling" class="gallery-image">
                     <p class="gallery-caption">Luxury Master Bathroom Remodel - Fort Lee, NJ</p>
                 </div>
                 
                 <!-- Project 3 -->
                 <div class="gallery-item">
-                    <img src="img/project-3.jpg" alt="Basement Finishing" class="gallery-image">
+                    <img src="project-3.jpg" alt="Basement Finishing" class="gallery-image">
                     <p class="gallery-caption">Basement Entertainment Room - Tenafly, NJ</p>
                 </div>
                 
                 <!-- Project 4 -->
                 <div class="gallery-item">
-                    <img src="img/project-4.jpg" alt="Deck Construction" class="gallery-image">
+                    <img src="project-4.jpg" alt="Deck Construction" class="gallery-image">
                     <p class="gallery-caption">Custom Deck Installation - Closter, NJ</p>
                 </div>
             </div>
@@ -394,7 +451,7 @@
     </section>
 
     <!-- Testimonials Section -->
-    <section id="testimonials" class="section fade-in-section">
+    <section id="testimonials" class="section bg-light fade-in-section">
         <div class="container">
             <div class="section-header">
                 <h2>What Our Customers Say</h2>
@@ -433,14 +490,14 @@
     </section>
 
     <!-- Service Areas Section -->
-    <section id="service-areas" class="section bg-light fade-in-section">
+    <section id="service-areas" class="section fade-in-section">
         <div class="container">
             <div class="section-header">
                 <h2>Service Area</h2>
                 <p>Proudly serving Bergen County and surrounding areas from our Englewood location</p>
             </div>
             <div class="service-areas-container">
-                <img src="img/bergen-county-map.jpg" alt="Bergen County Service Area" class="service-area-map" loading="lazy">
+                <img src="bergen-county-map.jpg" alt="Bergen County Service Area" class="service-area-map" loading="lazy">
                 <div class="service-towns-container">
                     <div class="service-towns">
                         <span>Englewood</span>
@@ -458,7 +515,7 @@
     </section>
 
     <!-- FAQ Section -->
-    <section id="faq" class="section fade-in-section">
+    <section id="faq" class="section bg-light fade-in-section">
         <div class="container">
             <div class="section-header">
                 <h2>Frequently Asked Questions</h2>
@@ -727,163 +784,6 @@
         </div>
     </footer>
 
-   <script src="/script.js"></script>
+   <script src="script.js"></script>
 </body>
 </html>
-<!-- Navigation with Dropdown -->
-<nav class="navbar">
-    <div class="navbar-container">
-        <div class="navbar-content">
-            <div class="logo">
-                <h1>GR Construction</h1>
-            </div>
-            <div class="nav-links" id="navLinks">
-                <div class="dropdown">
-                    <a href="/#services" class="dropdown-toggle">Services</a>
-                    <div class="dropdown-menu">
-                        <a href="/kitchen-remodeling.html">Kitchen Remodeling</a>
-                        <a href="/bathroom-remodeling.html">Bathroom Remodeling</a>
-                        <a href="/basement-remodeling.html">Basement Remodeling</a>
-                        <a href="/interior-remodeling.html">Interior Remodeling</a>
-                        <a href="/exterior-remodeling.html">Exterior Remodeling</a>
-                        <a href="/masonry.html">Masonry</a>
-                    </div>
-                </div>
-                <a href="/#gallery">Gallery</a>
-                <a href="/#testimonials">Testimonials</a>
-                <a href="/#contact">Contact</a>
-            </div>
-
-            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-    </div>
-</nav>
-
-<!-- CSS for dropdown menu -->
-<style>
-    /* Dropdown Styles */
-    .dropdown {
-        position: relative;
-        display: inline-block;
-    }
-    
-    .dropdown-toggle {
-        position: relative;
-        padding-right: 1.5rem;
-    }
-    
-    .dropdown-toggle::after {
-        content: "";
-        position: absolute;
-        right: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 0;
-        height: 0;
-        border-left: 5px solid transparent;
-        border-right: 5px solid transparent;
-        border-top: 5px solid currentColor;
-        transition: transform 0.3s;
-    }
-    
-    .dropdown-menu {
-        position: absolute;
-        top: 100%;
-        left: -15px;
-        background-color: var(--white);
-        min-width: 220px;
-        box-shadow: var(--shadow);
-        border-radius: 0.375rem;
-        padding: 0.75rem 0;
-        z-index: 1000;
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(10px);
-        transition: all 0.3s ease;
-    }
-    
-    .dropdown:hover .dropdown-menu,
-    .dropdown:focus-within .dropdown-menu {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-    }
-    
-    .dropdown-menu a {
-        display: block;
-        padding: 0.6rem 1.5rem;
-        color: var(--text);
-        transition: background-color 0.2s, color 0.2s;
-    }
-    
-    .dropdown-menu a:hover {
-        background-color: var(--gray-100);
-        color: var(--primary);
-    }
-    
-    /* Mobile Dropdown Menu */
-    @media (max-width: 768px) {
-        .dropdown {
-            display: block;
-            width: 100%;
-        }
-        
-        .dropdown-toggle {
-            display: block;
-            width: 100%;
-            text-align: left;
-            padding: 1rem 0;
-        }
-        
-        .dropdown-toggle::after {
-            right: 10px;
-        }
-        
-        .dropdown-menu {
-            position: static;
-            box-shadow: none;
-            opacity: 1;
-            visibility: visible;
-            transform: none;
-            background-color: transparent;
-            padding: 0;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-        
-        .dropdown.active .dropdown-menu {
-            max-height: 500px;
-        }
-        
-        .dropdown-menu a {
-            padding: 0.5rem 0 0.5rem 1.5rem;
-            border-left: 2px solid var(--gray-200);
-            margin-left: 1rem;
-        }
-    }
-</style>
-
-<!-- JavaScript for mobile dropdown functionality -->
-<script>
-    // Add this to your existing script.js file
-    document.addEventListener('DOMContentLoaded', function() {
-        // Mobile dropdown functionality
-        const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
-        
-        dropdownToggles.forEach(toggle => {
-            toggle.addEventListener('click', function(e) {
-                // Only apply this on mobile
-                if (window.innerWidth <= 768) {
-                    e.preventDefault();
-                    const parent = this.parentElement;
-                    parent.classList.toggle('active');
-                }
-            });
-        });
-    });
-</script>
