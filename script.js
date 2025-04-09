@@ -33,7 +33,23 @@ const initMobileMenu = () => {
     });
 };
 
-// Testimonials Slider
+// Dropdown Menu Functionality
+const initDropdownMenu = () => {
+    // Only apply this on mobile
+    if (isMobile()) {
+        const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+        
+        dropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                const parent = this.parentElement;
+                parent.classList.toggle('active');
+            });
+        });
+    }
+};
+
+// Testimonials Slider with Swipe Support
 class TestimonialSlider {
     constructor(containerId) {
         this.container = document.getElementById(containerId);
@@ -46,6 +62,8 @@ class TestimonialSlider {
         this.total = this.slides.length;
         this.interval = null;
         this.isHovered = false;
+        this.touchStartX = 0;
+        this.touchEndX = 0;
 
         this.init();
     }
@@ -55,6 +73,7 @@ class TestimonialSlider {
         this.showSlide(0);
         this.startAutoPlay();
         this.handleHover();
+        this.handleSwipe();
     }
 
     createNavigation() {
@@ -92,6 +111,16 @@ class TestimonialSlider {
         this.resetAutoPlay();
     }
 
+    nextSlide() {
+        this.showSlide((this.currentSlide + 1) % this.total);
+        this.resetAutoPlay();
+    }
+
+    prevSlide() {
+        this.showSlide((this.currentSlide - 1 + this.total) % this.total);
+        this.resetAutoPlay();
+    }
+
     startAutoPlay() {
         this.interval = setInterval(() => {
             if (!this.isHovered) {
@@ -113,6 +142,167 @@ class TestimonialSlider {
         this.container.addEventListener('mouseleave', () => {
             this.isHovered = false;
         });
+    }
+
+    handleSwipe() {
+        this.container.addEventListener('touchstart', (e) => {
+            this.touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        this.container.addEventListener('touchend', (e) => {
+            this.touchEndX = e.changedTouches[0].screenX;
+            this.handleSwipeGesture();
+        }, { passive: true });
+    }
+
+    handleSwipeGesture() {
+        const swipeThreshold = 50;
+        const diff = this.touchStartX - this.touchEndX;
+
+        if (Math.abs(diff) < swipeThreshold) return;
+
+        if (diff > 0) {
+            // Swiped left - next slide
+            this.nextSlide();
+        } else {
+            // Swiped right - previous slide
+            this.prevSlide();
+        }
+    }
+}
+
+// Gallery Slider with Swipe Support
+class GallerySlider {
+    constructor(containerId) {
+        this.container = document.getElementById(containerId);
+        if (!this.container) return;
+        
+        this.slides = this.container.querySelectorAll('.gallery-slide');
+        if (this.slides.length <= 1) return;
+        
+        this.currentSlide = 0;
+        this.total = this.slides.length;
+        this.interval = null;
+        this.isHovered = false;
+        this.touchStartX = 0;
+        this.touchEndX = 0;
+        
+        this.init();
+    }
+    
+    init() {
+        this.createNavigation();
+        this.showSlide(0);
+        this.startAutoPlay();
+        this.handleHover();
+        this.handleNavigation();
+        this.handleSwipe();
+    }
+    
+    createNavigation() {
+        const dotsContainer = document.querySelector('.gallery-dots');
+        if (!dotsContainer) return;
+        
+        for (let i = 0; i < this.total; i++) {
+            const dot = document.createElement('button');
+            dot.className = 'gallery-dot';
+            dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+            dot.addEventListener('click', () => this.goToSlide(i));
+            dotsContainer.appendChild(dot);
+        }
+        
+        this.dots = dotsContainer.children;
+    }
+    
+    showSlide(index) {
+        this.slides.forEach((slide, i) => {
+            slide.style.display = i === index ? 'block' : 'none';
+            if (this.dots) {
+                this.dots[i].classList.toggle('active', i === index);
+            }
+        });
+        this.currentSlide = index;
+    }
+    
+    goToSlide(index) {
+        this.showSlide(index);
+        this.resetAutoPlay();
+    }
+    
+    nextSlide() {
+        this.showSlide((this.currentSlide + 1) % this.total);
+        this.resetAutoPlay();
+    }
+    
+    prevSlide() {
+        this.showSlide((this.currentSlide - 1 + this.total) % this.total);
+        this.resetAutoPlay();
+    }
+    
+    startAutoPlay() {
+        this.interval = setInterval(() => {
+            if (!this.isHovered) {
+                this.nextSlide();
+            }
+        }, 5000);
+    }
+    
+    resetAutoPlay() {
+        clearInterval(this.interval);
+        this.startAutoPlay();
+    }
+    
+    handleHover() {
+        this.container.addEventListener('mouseenter', () => {
+            this.isHovered = true;
+        });
+        
+        this.container.addEventListener('mouseleave', () => {
+            this.isHovered = false;
+        });
+    }
+    
+    handleNavigation() {
+        const prevButton = document.querySelector('.gallery-prev');
+        const nextButton = document.querySelector('.gallery-next');
+        
+        if (prevButton) {
+            prevButton.addEventListener('click', () => {
+                this.prevSlide();
+            });
+        }
+        
+        if (nextButton) {
+            nextButton.addEventListener('click', () => {
+                this.nextSlide();
+            });
+        }
+    }
+
+handleSwipe() {
+        this.container.addEventListener('touchstart', (e) => {
+            this.touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        this.container.addEventListener('touchend', (e) => {
+            this.touchEndX = e.changedTouches[0].screenX;
+            this.handleSwipeGesture();
+        }, { passive: true });
+    }
+
+    handleSwipeGesture() {
+        const swipeThreshold = 50;
+        const diff = this.touchStartX - this.touchEndX;
+
+        if (Math.abs(diff) < swipeThreshold) return;
+
+        if (diff > 0) {
+            // Swiped left - next slide
+            this.nextSlide();
+        } else {
+            // Swiped right - previous slide
+            this.prevSlide();
+        }
     }
 }
 
@@ -169,7 +359,11 @@ const initScrollAnimations = () => {
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     initMobileMenu();
+    initDropdownMenu();
     new TestimonialSlider('testimonialSlider');
+    if (elementExists('gallerySlider')) {
+        new GallerySlider('gallerySlider');
+    }
     initFaqAccordion();
     initScrollAnimations();
 
